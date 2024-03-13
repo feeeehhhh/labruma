@@ -21,7 +21,7 @@ function App() {
   return (
     <main className="  space-y-10 text-blue-950 bg-im">
       <header
-        className=" bg-yellow-300 flex justify-between items-center w-full  p-2 md:px-16  lg:px-24 fixed top-0 z-50"
+        className=" bg-yellow-300 flex justify-between items-center w-full  p-2 md:px-16  lg:px-20 fixed top-0 z-50 lg:h-[80px]"
         style={{
           backgroundImage: `url(${bolofund})`,
           backgroundRepeat: 'repeat',
@@ -46,6 +46,7 @@ function App() {
               src={logo}
               alt="Logo Labruma"
               width={150}
+              className="lg:max-h-20"
             />
           </a>
         </div>
@@ -109,47 +110,49 @@ function App() {
           </DropdownMenu.Trigger>
         </DropdownMenu.Root>
       </header>
-      <section className="flex flex-col items-center  ">
-        <motion.div
-          className="my-16 md:my-24"
-          initial={{ x: 100 }}
-          animate={{ x: 0 }}
-        >
-          <h1 className="font-bold text-3xl leading-10 text-amber-950 text-center  p-1 uppercase md:text-4xl ">
-            Labruma Bolos
-          </h1>
-          <p className="mx-4 text-center py-6 text-xl md:w-[600px] md:py-3 md:text-[23px] lg:w-[700px]">
-            "Bem-vindo à nossa confeitaria, onde a doçura vai além do paladar, é
-            uma experiência que compartilhamos com você desde 2015."
-          </p>
-        </motion.div>
-        <div className="max-w-[370px] md:max-w-[600px] lg:max-w-[900px] -my-16">
+      <section className="  mx-1">
+        <div className="items-center flex flex-col">
           <motion.div
-            ref={carrosel}
-            className="overflow-hidden cursor-grab"
-            whileTap={{ cursor: ' grabbing ' }}
+            className="my-16 md:my-24 "
+            initial={{ x: 100 }}
+            animate={{ x: 0 }}
           >
-            <motion.div
-              className="flex"
-              drag="x"
-              dragConstraints={{ right: 0, left: -width }}
-              initial={{ x: 100 }}
-              animate={{ x: 0 }}
-            >
-              {slides.map((img) => (
-                <motion.div
-                  className="min-w-[350px]  p-2 pointer-events-none"
-                  key={1}
-                >
-                  <img
-                    className="w-full h-4/6 rounded-xl"
-                    src={img}
-                    alt="Images"
-                  />
-                </motion.div>
-              ))}
-            </motion.div>
+            <h1 className="font-bold text-3xl leading-10 text-amber-950 text-center  p-1 uppercase md:text-4xl ">
+              Labruma Bolos
+            </h1>
+            <p className="mx-4 text-center py-6 text-xl md:w-[600px] md:py-3 md:text-[23px] lg:w-[700px]">
+              "Bem-vindo à nossa confeitaria, onde a doçura vai além do paladar,
+              é uma experiência que compartilhamos com você desde 2015."
+            </p>
           </motion.div>
+          <div className="max-w-[330px] md:max-w-[600px] lg:max-w-[900px] -my-16">
+            <motion.div
+              ref={carrosel}
+              className="overflow-hidden cursor-grab"
+              whileTap={{ cursor: ' grabbing ' }}
+            >
+              <motion.div
+                className="flex"
+                drag="x"
+                dragConstraints={{ right: 0, left: -width }}
+                initial={{ x: 100 }}
+                animate={{ x: 0 }}
+              >
+                {slides.map((img) => (
+                  <motion.div
+                    className="min-w-[350px]  p-2 pointer-events-none"
+                    key={1}
+                  >
+                    <img
+                      className="w-full h-4/6 rounded-xl"
+                      src={img}
+                      alt="Images"
+                    />
+                  </motion.div>
+                ))}
+              </motion.div>
+            </motion.div>
+          </div>
         </div>
 
         <div className="flex  flex-col items-center -m-12 md:m-0     bg-yellow-200  py-3 text-center md:text-2xl">
@@ -190,11 +193,11 @@ function App() {
           </div>
         </div>
         <div
-          className="flex flex-col p-8 lgp-0 items-center 
+          className="flex flex-col p-8  items-center 
        lg:px-[96px] my-24 lg:my-16 space-y-6 somos "
         >
-          <h1 className="text-3xl  font-semibold text-amber-950 md:text-4xl">
-            Quem Somos
+          <h1 className="text-3xl  font-bold text-amber-950 md:text-4xl">
+            QUEM SOMOS
           </h1>
           <div className="md:flex text-lg space-y-6 md:text-2xl md:space-y-0">
             <p className="text-justify md:text-[28px]">
@@ -211,26 +214,59 @@ function App() {
             </p>
           </div>
         </div>
-        <div className="">
-          <h3 className="text-3xl text-amber-950 font-medium">
-            Entre em Contato
+        <div className="space-y-3 -my-20 lg:mx-20 ">
+          <h3 className="text-3xl text-amber-950  text-center font-bold ">
+            CONTATO
           </h3>
-          <div className="tex">
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d3701.643542337437!2d-46.75688900142531!3d-23.334536172719304!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1spt-BR!2sbr!4v1710201856002!5m2!1spt-BR!2sbr"
-              allowfullscreen=""
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              className="rounded-md w-[500px] h-[300px] z-0"
-            >
+          <div className="p-4 lg:flex ">
+            <div>
               <iframe
-                src="https://www.google.com/maps/embed?pb=!4v1710202453158!6m8!1m7!1sbKBJbZENDgYaVZiwLaWUoQ!2m2!1d-23.33303680782667!2d-46.75534076570446!3f349.6473821142582!4f-2.1326088983511227!5f0.7820865974627469"
+                src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d3701.643542337437!2d-46.75688900142531!3d-23.334536172719304!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1spt-BR!2sbr!4v1710201856002!5m2!1spt-BR!2sbr"
                 allowfullscreen=""
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                className="z-10"
+                className="rounded-t-xl min-w-[340px] min-h-[200px] md:min-w-[700px] md:min-h-[300px] lg:min-w-[500px] lg:min-h-[400px]"
               ></iframe>
-            </iframe>
+            </div>
+
+            <form className="bg-yellow-300 p-2 space-y-2 rounded-b-xl mb-20 md:space-y-6 lg:mb-44 lg:min-w-[58%] lg:min-h-[400px] lg:rounded-es-2xl">
+              <h3 className="text-center font-bold text-amber-950 text-lg md:text-2xl md:my-3">
+                ENTRAR EM CONTATO
+              </h3>
+              <div className="flex items-center gap-2 bg-yellow-100 rounded-md px-3 mx-2">
+                <span className="text-blue-950 text-lg md:text-2xl">
+                  <ion-icon name="person"></ion-icon>
+                </span>
+                <input
+                  type="text"
+                  placeholder="Nome"
+                  className="w-full bg-yellow-100 py-2 rounded-md text-lg md:text-2xl"
+                />
+              </div>
+              <div className="flex items-center gap-2 bg-yellow-100 rounded-md px-3 mx-2">
+                <span className="text-blue-950 text-lg md:text-2xl">
+                  <ion-icon name="paper-plane"></ion-icon>
+                </span>
+                <input
+                  type="email"
+                  placeholder="Email"
+                  className="w-full bg-yellow-100 py-2 rounded-md text-lg md:text-2xl"
+                />
+              </div>
+              <div className="flex items-center gap-2 bg-yellow-100 rounded-md px-3 mx-2">
+                <span className="text-blue-950 text-lg  md:text-2xl">
+                  <ion-icon name="call"></ion-icon>
+                </span>
+                <input
+                  type="number"
+                  placeholder="Telefone"
+                  className="w-full bg-yellow-100 py-2 rounded-md text-lg md:text-2xl"
+                />
+              </div>
+              <button className="bg-green-300 px-2 py-1 rounded-lg font-semibold text-lg mx-2 md:text-2xl md:py-2">
+                Enviar mensagem
+              </button>
+            </form>
           </div>
         </div>
       </section>
