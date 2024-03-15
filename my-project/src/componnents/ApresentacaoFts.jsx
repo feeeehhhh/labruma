@@ -2,12 +2,14 @@ import React, { useState, useEffect, useRef } from 'react'
 
 import { motion } from 'framer-motion'
 import { register } from 'swiper/element/bundle'
+import { Swiper, SwiperSlide } from 'swiper/react'
 
-import img01 from '../assets/bolo01jpg.jpg'
-import img02 from '../assets/bolo02.jpg'
-import img03 from '../assets/bolo03.jpg'
-import img05 from '../assets/bolo05.jpg'
-import img06 from '../assets/bolo06.jpg'
+import img01 from '../assets/bolosslides/bolo01jpg_resized.jpg'
+import img02 from '../assets/bolosslides/bolo02_resized.jpg'
+import img03 from '../assets/bolosslides/bolo03_resized.jpg'
+import img04 from '../assets/bolosslides/bolo.04jpg.jpg'
+import img05 from '../assets/bolosslides/bolo05_resized.jpg'
+import img06 from '../assets/bolosslides/bolo06_resized.jpg'
 import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
@@ -15,14 +17,24 @@ import 'swiper/css/scrollbar'
 
 register()
 
-const slides = [img06, img05, img02, img03, img01]
+const slides = [
+  { id: '1', image: img01 },
+  { id: '2', image: img02 },
+  { id: '3', image: img03 },
+  { id: '4', image: img04 },
+  { id: '5', image: img05 },
+]
 
 function ApresentacaoFts() {
-  const carrosel = useRef()
-  const [width, setWidth] = useState(0)
+  const [slidesPerView, setSlidePerView] = useState(2)
+
   useEffect(() => {
-    setWidth(carrosel.current?.scrollWidth - carrosel.current.offsetWidth)
-  }, [])
+    if (window.innerWidth < 720) {
+      setSlidePerView(1)
+    } else {
+      setSlidePerView(2)
+    }
+  })
   return (
     <div className="items-center flex flex-col">
       <motion.div
@@ -30,7 +42,7 @@ function ApresentacaoFts() {
         initial={{ x: 100 }}
         animate={{ x: 0 }}
       >
-        <h1 className="font-bold text-4xl leading-10 text-amber-950 text-center   uppercase md:text-5xl ">
+        <h1 className="font-bold text-4xl leading-10 text-amber-950 text-center   uppercase md:text-5xl md:rounded-r-none">
           Labruma Bolos
         </h1>
         <p className="mx-4 text-center py-6 text-xl md:w-[600px] md:py-3 md:text-[20px] lg:w-[700px]">
@@ -38,33 +50,22 @@ function ApresentacaoFts() {
           uma experiência que compartilhamos com você desde 2015."
         </p>
       </motion.div>
-      <div className="max-w-[330px] md:max-w-[600px] lg:max-w-[900px] -my-16">
-        <motion.div
-          ref={carrosel}
-          className="overflow-hidden cursor-grab"
-          whileTap={{ cursor: ' grabbing ' }}
+      <div className="max-w-[350px] md:max-w-[900px] -my-12 mb-28 flex ">
+        <Swiper
+          slidesPerView={slidesPerView}
+          pagination={{ clickable: true }}
+          navigation
         >
-          <motion.div
-            className="flex"
-            drag="x"
-            dragConstraints={{ right: 0, left: -width }}
-            animate={{ x: 0 }}
-          >
-            {slides.map((img) => (
-              <motion.div
-                className="min-w-[350px]  p-2 pointer-events-none"
-                key={img}
-              >
-                <motion.img
-                  className="w-full h-4/6 rounded-xl"
-                  src={img}
-                  alt="Images"
-                  drag="x"
-                />
-              </motion.div>
-            ))}
-          </motion.div>
-        </motion.div>
+          {slides.map((item) => (
+            <SwiperSlide key={item.id}>
+              <img
+                src={item.image}
+                alt="Slider"
+                className="w-full  object-cover rounded-xl "
+              />
+            </SwiperSlide>
+          ))}
+        </Swiper>
       </div>
     </div>
   )

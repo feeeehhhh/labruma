@@ -7,9 +7,9 @@ function Etica() {
   return (
     <div className="flex  flex-col items-center -my-14 md:m-0      bg-yellow-200  py-3 text-center md:text-2xl">
       <img src={logo} alt="" width={190} />
-      <Container
+      <div
         id="etica"
-        className="md:text-[20px] md:text-balance py-4 lg:flex md:p-10 lg:p-15 minha-etica space-y-4 lg:space-y-0 lg:-gap-3 "
+        className="md:text-[20px] md:text-balance py-4 lg:flex md:p-10 lg:p-15 minha-etica space-y-4 lg:space-y-0  "
       >
         <div>
           <h3 className="text-[22px] font-semibold md:text-3xl text-amber-950 ">
@@ -40,7 +40,7 @@ function Etica() {
             para encantar, sempre!
           </p>
         </div>
-      </Container>
+      </div>
     </div>
   )
 }

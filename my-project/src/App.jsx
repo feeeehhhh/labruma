@@ -3,7 +3,7 @@ import React from 'react'
 import Menu from './componnents/Menu'
 import ApresentacaoFts from './componnents/ApresentacaoFts'
 
-import saito from './assets/logo_semBorda.svg'
+import saito from './assets/saito.png'
 import ferdezoni from './assets/ferdezoniquali.svg'
 import Etica from './componnents/Etica'
 
@@ -16,23 +16,26 @@ function App() {
         <Etica />
         <div
           className="flex flex-col p-8  items-center 
-       lg:px-[96px] my-24 lg:my-16 space-y-6 somos "
+       lg:px-[96px] my-24 lg:my-16 space-y-6 somos   "
         >
           <h1 className="text-3xl  font-bold text-amber-950 md:text-3xl">
             QUEM SOMOS
           </h1>
-          <div className="md:flex text-lg space-y-6 md:text-2xl md:space-y-0">
-            <p className="text-justify md:text-[20px]">
+          <div className="flex flex-col gap-7 lg:gap-14 text-lg  md:text-2xl md:space-y-0   ">
+            <p className="text-justify md:text-[20px] ">
               Somos mais que uma confeitaria; somos uma jornada culinária que
               começou em 2015, impulsionada pela paixão pela arte da
               confeitaria. Cada doce é uma expressão do nosso compromisso com a
               qualidade, feito com ingredientes frescos e uma pitada extra de
-              amor. <br /> <br /> Com uma equipe dedicada e experiente,
-              celebramos não apenas sabores excepcionais, mas também os momentos
-              especiais que tornam cada criação única. Nosso compromisso com a
-              comunidade local vai além do sabor, refletindo-se em eventos,
-              apoio a causas importantes e, acima de tudo, na gratidão aos
-              nossos queridos clientes, que são a essência do que somos.
+              amor.
+            </p>
+            <p className="text-justify md:text-[20px] ">
+              Com uma equipe dedicada e experiente, celebramos não apenas
+              sabores excepcionais, mas também os momentos especiais que tornam
+              cada criação única. Nosso compromisso com a comunidade local vai
+              além do sabor, refletindo-se em eventos, apoio a causas
+              importantes e, acima de tudo, na gratidão aos nossos queridos
+              clientes, que são a essência do que somos.
             </p>
           </div>
         </div>
@@ -49,8 +52,8 @@ function App() {
             Nossos bolos são entregues com cuidado e dedicação, garantindo a
             satisfação de nossos parceiros e clientes em cada celebração.
           </p>
-          <div className="flex justify-center items-center space-x-10 ">
-            <img src={saito} alt="Logo Saito Supermercados" className="w-28" />
+          <div className="flex justify-center items-center space-x-3 md:space-x-10">
+            <img src={saito} alt="Logo Saito Supermercados" className="w-44" />
             <img
               src={ferdezoni}
               alt="Logo Ferdezoni Supermercados"
@@ -58,22 +61,22 @@ function App() {
             />
           </div>
         </div>
-        <div className="space-y-6  lg:mx-23  lg:ml-20 ">
+        <div className="space-y-6  lg:mx-23  ">
           <h3 className="text-3xl text-amber-950  text-center font-bold ">
             CONTATO
           </h3>
-          <div className=" m-4 lg:flex w-[374px]">
+          <div className="flex flex-col  lg:flex-row  min-w-[370px] md:min-w-[700px] lg:w-full m-4 justify-center lg:m-0">
             <div>
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14654.102637703934!2d-46.7553952!3d-23.332963!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94cee38cc8299c13%3A0xf39cb95d3e70aacf!2sLabruma%20Bolos!5e0!3m2!1spt-BR!2sbr!4v1710368552383!5m2!1spt-BR!2sbr"
                 allowfullscreen=""
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                className="rounded-t-xl min-w-[375px] min-h-[240px] md:min-w-[700px] md:min-h-[300px] lg:min-w-[500px] lg:min-h-[400px]"
+                className="rounded-t-xl w-full  min-h-[240px]  md:min-h-[350px] lg:min-w-[500px] lg:min-h-[400px] lg:rounded-none lg:rounded-s-xl "
               ></iframe>
             </div>
 
-            <form className="bg-yellow-300 p-2 space-y-4 rounded-b-xl mb-20 md:space-y-6 lg:mb-44 lg:min-w-[58%] lg:min-h-[400px] lg:rounded-es-2xl">
+            <form className="  bg-yellow-300 p-2 space-y-4 rounded-b-xl mb-20 md:space-y-6 lg:mb-44 lg:min-w-[58%] lg:min-h-[400px] lg:rounded-none lg:rounded-r-xl">
               <h3 className="text-center font-bold text-amber-950 text-lg md:text-2xl md:my-3">
                 ENTRAR EM CONTATO
               </h3>
