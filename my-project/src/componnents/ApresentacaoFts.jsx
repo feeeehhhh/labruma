@@ -9,11 +9,12 @@ import img02 from '../assets/bolosslides/bolo02_resized.jpg'
 import img03 from '../assets/bolosslides/bolo03_resized.jpg'
 import img04 from '../assets/bolosslides/bolo.04jpg.jpg'
 import img05 from '../assets/bolosslides/bolo05_resized.jpg'
-import img06 from '../assets/bolosslides/bolo06_resized.jpg'
+
 import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 import 'swiper/css/scrollbar'
+import './Apresentacao.css'
 
 register()
 
@@ -36,21 +37,24 @@ function ApresentacaoFts() {
     }
   })
   return (
-    <div className="items-center flex flex-col">
+    <div
+      className="items-center flex flex-col -space-y-2
+    "
+    >
       <motion.div
-        className="my-16 md:my-24 "
+        className=" md:my-16  "
         initial={{ x: 100 }}
         animate={{ x: 0 }}
       >
         <h1 className="font-bold text-4xl leading-10 text-amber-950 text-center   uppercase md:text-5xl md:rounded-r-none">
           Labruma Bolos
         </h1>
-        <p className="mx-4 text-center py-6 text-xl md:w-[600px] md:py-3 md:text-[20px] lg:w-[700px]">
+        <p className="mx-4 text-center py-6 text-xl md:w-[600px] md:py-3 md:text-[20px] lg:w-[700px] ">
           "Bem-vindo à nossa confeitaria, onde a doçura vai além do paladar, é
           uma experiência que compartilhamos com você desde 2015."
         </p>
       </motion.div>
-      <div className="max-w-[350px] md:max-w-[900px] -my-12 mb-28 flex ">
+      <div className="max-w-[350px] md:max-w-[750px] lg:min-w-[1000px] -my-12 mb-28 flex ">
         <Swiper
           slidesPerView={slidesPerView}
           pagination={{ clickable: true }}
@@ -58,11 +62,13 @@ function ApresentacaoFts() {
         >
           {slides.map((item) => (
             <SwiperSlide key={item.id}>
-              <img
-                src={item.image}
-                alt="Slider"
-                className="w-full  object-cover rounded-xl "
-              />
+              <div className="mx-4 ">
+                <img
+                  src={item.image}
+                  alt="Slider"
+                  className="w-full  object-cover rounded-xl "
+                />
+              </div>
             </SwiperSlide>
           ))}
         </Swiper>

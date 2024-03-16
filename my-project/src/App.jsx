@@ -1,22 +1,47 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import Menu from './componnents/Menu'
 import ApresentacaoFts from './componnents/ApresentacaoFts'
+import { Toaster, toast } from 'sonner'
 
 import saito from './assets/saito.png'
 import ferdezoni from './assets/ferdezoniquali.svg'
 import Etica from './componnents/Etica'
 
 function App() {
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [message, setMessage] = useState('')
+  const [numero, setNumero] = useState('')
+  const [data, setData] = useState('')
+
+  // function handleSubmit(e) {
+  //   e.preventDefault()
+  //   console.log(name, email, message, numero)
+  //   const newData = {
+  //     name,
+  //     email,
+  //     numero,
+  //     message,
+  //   }
+  //   setData(newData)
+  //   console.log(data)
+  //   setName('')
+  //   setEmail('')
+  //   setNumero('')
+  //   setMessage('')
+  // }
   return (
     <main className="  space-y-10 text-blue-950 bg-im">
+      <Toaster richColors />
       <Menu />
-      <ApresentacaoFts />
+      <ApresentacaoFts id="inicio" />
       <section>
         <Etica />
         <div
+          id="nos"
           className="flex flex-col p-8  items-center 
-       lg:px-[96px] my-24 lg:my-16 space-y-6 somos   "
+       lg:px-[96px] -my-16 space-y-6 somos   "
         >
           <h1 className="text-3xl  font-bold text-amber-950 md:text-3xl">
             QUEM SOMOS
@@ -40,8 +65,9 @@ function App() {
           </div>
         </div>
         <div
-          className="text-center -my-8 mb-20 bg-yellow-200 flex flex-col p-8  items-center 
-       lg:px-[96px] lg:my-16 space-y-6 "
+          id="parca"
+          className="text-center   mb-20 bg-yellow-200 flex flex-col p-8  items-center 
+       lg:px-[96px] my-32 lg:my-40 space-y-6 "
         >
           <h1 className="text-3xl text-amber-950  text-center font-bold ">
             NOSSOS PARCEIROS
@@ -61,7 +87,7 @@ function App() {
             />
           </div>
         </div>
-        <div className="space-y-6  lg:mx-23  ">
+        <div id="ctt" className="space-y-12  lg:mx-23  lg:-my-6 lg:mb-40 mx-20">
           <h3 className="text-3xl text-amber-950  text-center font-bold ">
             CONTATO
           </h3>
@@ -72,11 +98,18 @@ function App() {
                 allowfullscreen=""
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                className="rounded-t-xl w-full  min-h-[240px]  md:min-h-[350px] lg:min-w-[500px] lg:min-h-[400px] lg:rounded-none lg:rounded-s-xl "
+                className="rounded-t-xl w-full  min-h-[240px]  md:min-h-[350px] lg:min-w-[500px] lg:min-h-[490px] lg:rounded-none lg:rounded-s-xl "
               ></iframe>
             </div>
 
-            <form className="  bg-yellow-300 p-2 space-y-4 rounded-b-xl mb-20 md:space-y-6 lg:mb-44 lg:min-w-[58%] lg:min-h-[400px] lg:rounded-none lg:rounded-r-xl">
+            <form
+              className="  bg-yellow-300 p-2 space-y-4 rounded-b-xl mb-10 lg:mb-0 md:space-y-6 lg:mb-44 lg:min-w-[58%] lg:min-h-[400px] lg:rounded-none lg:rounded-r-xl"
+              onSubmit={(e) => {
+                handleSubmit(e)
+              }}
+              action="https://api.staticforms.xyz/submit"
+              method="POST"
+            >
               <h3 className="text-center font-bold text-amber-950 text-lg md:text-2xl md:my-3">
                 ENTRAR EM CONTATO
               </h3>
@@ -87,7 +120,11 @@ function App() {
                 <input
                   type="text"
                   placeholder="Nome"
-                  className="w-full bg-yellow-100 py-3 rounded-md text-lg md:text-2xl"
+                  className="w-full bg-yellow-100 py-3 rounded-md text-lg md:text-2xl border-transparent focus:outline-none"
+                  onChange={(e) => setName(e.target.value)}
+                  value={name}
+                  required
+                  maxLength={40}
                 />
               </div>
               <div className="flex items-center gap-2 bg-yellow-100 rounded-md px-3 mx-2">
@@ -97,7 +134,11 @@ function App() {
                 <input
                   type="email"
                   placeholder="Email"
-                  className="w-full bg-yellow-100 py-3 rounded-md text-lg md:text-2xl"
+                  className="w-full bg-yellow-100 py-3 rounded-md text-lg md:text-2xl border-transparent focus:outline-none"
+                  onChange={(e) => setEmail(e.target.value)}
+                  value={email}
+                  maxLength={40}
+                  required
                 />
               </div>
               <div className="flex items-center gap-2 bg-yellow-100 rounded-md px-3 mx-2">
@@ -105,12 +146,35 @@ function App() {
                   <ion-icon name="call"></ion-icon>
                 </span>
                 <input
-                  type="number"
-                  placeholder="Telefone"
-                  className="w-full bg-yellow-100 py-3 rounded-md text-lg md:text-2xl"
+                  type="text"
+                  placeholder="Telefone - (ex: xx xxxxx-xxxx)"
+                  className="w-full bg-yellow-100 py-3 rounded-md text-lg md:text-2xl border-transparent focus:outline-none"
+                  onChange={(e) => setNumero(e.target.value)}
+                  value={numero}
+                  title="Digite um número de telefone válido (ex: xx xxxx-xxxx/x)."
+                  maxLength={11}
+                  required
                 />
               </div>
-              <button className="bg-lime-500 px-2 py-3 rounded-lg font-semibold text-lg mx-2 md:text-2xl md:py-2 ">
+              <div className="px-2">
+                <textarea
+                  placeholder="Escreva sua menssagem"
+                  className="w-full rounded-md min-h-[90px] border-transparent focus:outline-none p-2"
+                  onChange={(e) => setMessage(e.target.value)}
+                  value={message}
+                  required
+                  maxLength={200}
+                ></textarea>
+              </div>
+              <input
+                type="hidden"
+                name="accessKey"
+                value="f656a37d-0cf4-4d34-b1fe-caa834ca3e89"
+              ></input>
+              <button
+                type="submit"
+                className="bg-lime-500 px-2 py-3 rounded-lg font-semibold text-lg mx-2 md:text-2xl md:py-2 hover:bg-lime-400 hover:text-blue-900"
+              >
                 Enviar mensagem
               </button>
             </form>
@@ -118,34 +182,121 @@ function App() {
         </div>
       </section>
       <footer
-        className="bg-amber-950 text-white
+        className="bg-amber-950 text-yellow-50
       "
       >
-        <div className="">
-          <ul className=" flex ">
-            <li className="space-y-4">
-              <p>(11)99999-9999</p>
-              <p>(11)3099-9999</p>
-            </li>
+        <div className="flex mx-4 py-4 justify-between lg:justify-center gap-56">
+          <ul className="space-y-4 text-xl font-semibold ">
+            <li className="hover:underline">
+              <a
+                href="#"
+                onClick={(e) => {
+                  e.preventDefault()
+                  const eticaSection = document.querySelector('body')
+                  eticaSection.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start',
+                    inline: 'nearest',
+                  })
+                  const offset = -260 // Valor de compensação para ajustar a posição após a rolagem
+                  const topPosition =
+                    eticaSection.getBoundingClientRect().top +
+                    window.pageYOffset +
+                    offset
 
-            <li className="space-y-4">
-              <p>
-                Rua tananana,157, Pituba <br />
-                CEP 07717-111.Caieiras -SP
-              </p>
-              <p>indorpac011@gmail.com</p>
+                  window.scrollTo({ top: topPosition, behavior: 'smooth' })
+                }}
+              >
+                Início
+              </a>
             </li>
+            <li className="hover:underline">
+              <a
+                href="#"
+                onClick={(e) => {
+                  e.preventDefault()
+                  const eticaSection = document.querySelector('#nos')
+                  eticaSection.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start',
+                    inline: 'nearest',
+                  })
+                  const offset = -80 // Valor de compensação para ajustar a posição após a rolagem
+                  const topPosition =
+                    eticaSection.getBoundingClientRect().top +
+                    window.pageYOffset +
+                    offset
 
-            <li className="max-w-40">
-              <p>
-                Domingo das 08h30 às 16h Segunda a Quinta das 08h30 às 18h30
-                Sexta das 08h30 às 18h Sábado das 08h30 às 17h30
-              </p>
+                  window.scrollTo({ top: topPosition, behavior: 'smooth' })
+                }}
+              >
+                Quem Somos
+              </a>
+            </li>
+            <li className="hover:underline">
+              <a
+                href="#"
+                onClick={(e) => {
+                  e.preventDefault()
+                  const eticaSection = document.querySelector('#parca')
+                  eticaSection.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start',
+                    inline: 'nearest',
+                  })
+                  const offset = -140 // Valor de compensação para ajustar a posição após a rolagem
+                  const topPosition =
+                    eticaSection.getBoundingClientRect().top +
+                    window.pageYOffset +
+                    offset
+
+                  window.scrollTo({ top: topPosition, behavior: 'smooth' })
+                }}
+              >
+                Parceiros
+              </a>
+            </li>
+            <li className="hover:underline">
+              <a
+                href="#"
+                onClick={(e) => {
+                  e.preventDefault()
+                  const eticaSection = document.querySelector('#ctt')
+                  eticaSection.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start',
+                    inline: 'nearest',
+                  })
+                  const offset = -90 // Valor de compensação para ajustar a posição após a rolagem
+                  const topPosition =
+                    eticaSection.getBoundingClientRect().top +
+                    window.pageYOffset +
+                    offset
+
+                  window.scrollTo({ top: topPosition, behavior: 'smooth' })
+                }}
+              >
+                Contato
+              </a>
             </li>
           </ul>
-          <h1 className="text-center pb-2">
-            2024@Todos os direitos reservados
-          </h1>
+          <div>
+            <h3 className="text-xl">Redes Sociais</h3>
+            <div className="flex items-center justify-center text-lg p-2 gap-2 font-semibold">
+              <span className="h-[25px] text-xl">
+                <ion-icon name="logo-facebook"></ion-icon>
+              </span>
+              <a className="hover:underline" href="">
+                Facebook
+              </a>
+            </div>
+          </div>
+        </div>
+        <div
+          className="text-center text-yellow-100 p-4
+        "
+        >
+          <p>&copy; 2024 Labruma Bolos. Todos os direitos reservados.</p>
         </div>
       </footer>
     </main>

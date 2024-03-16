@@ -6,16 +6,17 @@ import bolofund from '../assets/fundoo.jpg'
 import logo from '../assets/logolabruma2.svg'
 
 function Menu() {
+  
   return (
     <header
-      className=" bg-yellow-300 flex justify-between items-center w-full  p-2 md:px-16  lg:px-20 fixed top-0 z-50 lg:h-[80px]"
+      className=" bg-yellow-300 flex justify-between items-center w-full  p-2 md:px-16  lg:px-20  lg:h-[80px]"
       style={{
         backgroundImage: `url(${bolofund})`,
         backgroundRepeat: 'repeat',
         margin: '0 0 30px 0',
       }}
     >
-      <div className="">
+      <div>
         <a
           href="#"
           onClick={(e) => {
@@ -26,6 +27,13 @@ function Menu() {
               block: 'start',
               inline: 'nearest',
             })
+            const offset = -260 // Valor de compensação para ajustar a posição após a rolagem
+            const topPosition =
+              eticaSection.getBoundingClientRect().top +
+              window.pageYOffset +
+              offset
+
+            window.scrollTo({ top: topPosition, behavior: 'smooth' })
           }}
         >
           <img

@@ -5,7 +5,7 @@ import Container from './Container'
 
 function Etica() {
   return (
-    <div className="flex  flex-col items-center -my-14 md:m-0      bg-yellow-200  py-3 text-center md:text-2xl">
+    <div className="flex  flex-col items-center  my-24 lg:my-36      bg-yellow-200  py-3 text-center md:text-2xl">
       <img src={logo} alt="" width={190} />
       <div
         id="etica"
