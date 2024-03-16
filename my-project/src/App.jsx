@@ -60,10 +60,13 @@ function App() {
   }
   return (
     <main className="  space-y-10 text-blue-950 bg-im">
-      <Toaster richColors />
-      <Menu />
-      <ApresentacaoFts id="inicio" />
       <section>
+        <div style={{ zIndex: 0 }}>
+          <Menu />
+        </div>
+        <div style={{ zIndex: -1 }}>
+          <ApresentacaoFts id="inicio" />
+        </div>
         <Etica />
         <div
           id="nos"
@@ -114,7 +117,7 @@ function App() {
             />
           </div>
         </div>
-        <div id="ctt" className="space-y-12  lg:mx-23  lg:-my-6 lg:mb-40 mx-20">
+        <div id="ctt" className="space-y-12  lg:mx-23  lg:-my-6 lg:mb-40 ">
           <h3 className="text-3xl text-amber-950  text-center font-bold ">
             CONTATO
           </h3>
@@ -302,9 +305,10 @@ function App() {
               </a>
             </li>
           </ul>
-          <div>
+          <Toaster richColors />
+          <div className="-mx-4">
             <h3 className="text-xl">Redes Sociais</h3>
-            <div className="flex items-center justify-center text-lg p-2 gap-2 font-semibold">
+            <div className="flex items-center justify-center text-lg   font-semibold 564  '1er57">
               <span className="h-[25px] text-xl">
                 <ion-icon name="logo-facebook"></ion-icon>
               </span>

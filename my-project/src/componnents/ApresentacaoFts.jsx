@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect } from 'react'
 
 import { motion } from 'framer-motion'
 import { register } from 'swiper/element/bundle'
@@ -38,7 +38,7 @@ function ApresentacaoFts() {
   })
   return (
     <div
-      className="items-center flex flex-col -space-y-2
+      className="items-center flex flex-col space-y-2 my-10 
     "
     >
       <motion.div
@@ -54,11 +54,12 @@ function ApresentacaoFts() {
           uma experiência que compartilhamos com você desde 2015."
         </p>
       </motion.div>
-      <div className="max-w-[350px] md:max-w-[750px] lg:min-w-[1000px] -my-12 mb-28 flex ">
+      <div className="max-w-[350px] md:max-w-[750px] lg:min-w-[1000px] mb-28 flex ">
         <Swiper
           slidesPerView={slidesPerView}
           pagination={{ clickable: true }}
           navigation
+          style={{ zIndex: 0 }}
         >
           {slides.map((item) => (
             <SwiperSlide key={item.id}>
@@ -66,7 +67,7 @@ function ApresentacaoFts() {
                 <img
                   src={item.image}
                   alt="Slider"
-                  className="w-full  object-cover rounded-xl "
+                  className="w-full  object-cover rounded-xl  "
                 />
               </div>
             </SwiperSlide>

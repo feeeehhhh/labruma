@@ -1,7 +1,6 @@
 import React from 'react'
 
 import logo from '../assets/logolabruma2.svg'
-import Container from './Container'
 
 function Etica() {
   return (
