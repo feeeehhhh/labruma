@@ -11,26 +11,53 @@ import Etica from './componnents/Etica'
 function App() {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
+  const [phone, setPhone] = useState('')
   const [message, setMessage] = useState('')
-  const [numero, setNumero] = useState('')
-  const [data, setData] = useState('')
+  const [submitting, setSubmitting] = useState(false)
+  const [submitted, setSubmitted] = useState(false)
 
-  // function handleSubmit(e) {
-  //   e.preventDefault()
-  //   console.log(name, email, message, numero)
-  //   const newData = {
-  //     name,
-  //     email,
-  //     numero,
-  //     message,
-  //   }
-  //   setData(newData)
-  //   console.log(data)
-  //   setName('')
-  //   setEmail('')
-  //   setNumero('')
-  //   setMessage('')
-  // }
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    setSubmitting(true)
+
+    const formData = {
+      name,
+      email,
+      phone,
+      message,
+    }
+
+    try {
+      const response = await fetch('https://api.staticforms.xyz/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ...formData,
+          accessKey: 'f656a37d-0cf4-4d34-b1fe-caa834ca3e89', // Chave de acesso do seu formulário
+        }),
+      })
+
+      if (response.ok) {
+        setSubmitting(false)
+        setSubmitted(true)
+        setName('')
+        setEmail('')
+        setPhone('')
+        setMessage('')
+        toast.success('Formulário enviado com sucesso!')
+      } else {
+        toast.error('Erro ao enviar o formulário')
+      }
+    } catch (error) {
+      console.error('Erro:', error)
+      setSubmitting(false)
+      toast.error(
+        'Ocorreu um erro ao enviar o formulário. Por favor, tente novamente mais tarde.',
+      )
+    }
+  }
   return (
     <main className="  space-y-10 text-blue-950 bg-im">
       <Toaster richColors />
@@ -107,8 +134,6 @@ function App() {
               onSubmit={(e) => {
                 handleSubmit(e)
               }}
-              action="https://api.staticforms.xyz/submit"
-              method="POST"
             >
               <h3 className="text-center font-bold text-amber-950 text-lg md:text-2xl md:my-3">
                 ENTRAR EM CONTATO
@@ -147,10 +172,10 @@ function App() {
                 </span>
                 <input
                   type="text"
-                  placeholder="Telefone - (ex: xx xxxxx-xxxx)"
+                  placeholder="Telefone"
                   className="w-full bg-yellow-100 py-3 rounded-md text-lg md:text-2xl border-transparent focus:outline-none"
-                  onChange={(e) => setNumero(e.target.value)}
-                  value={numero}
+                  onChange={(e) => setPhone(e.target.value)}
+                  value={phone}
                   title="Digite um número de telefone válido (ex: xx xxxx-xxxx/x)."
                   maxLength={11}
                   required
@@ -166,13 +191,10 @@ function App() {
                   maxLength={200}
                 ></textarea>
               </div>
-              <input
-                type="hidden"
-                name="accessKey"
-                value="f656a37d-0cf4-4d34-b1fe-caa834ca3e89"
-              ></input>
+
               <button
                 type="submit"
+                disabled={submitting}
                 className="bg-lime-500 px-2 py-3 rounded-lg font-semibold text-lg mx-2 md:text-2xl md:py-2 hover:bg-lime-400 hover:text-blue-900"
               >
                 Enviar mensagem
