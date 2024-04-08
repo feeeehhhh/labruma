@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 <div>
     <h1 style=" display:flex;
             justify-content:center;
