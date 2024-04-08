@@ -66,13 +66,13 @@ function Menu() {
                 href="#"
                 onClick={(e) => {
                   e.preventDefault()
-                  const eticaSection = document.querySelector('.somos')
+                  const eticaSection = document.querySelector('#nos')
                   eticaSection.scrollIntoView({
                     behavior: 'smooth',
                     block: 'start',
                     inline: 'nearest',
                   })
-                  const offset = -140 // Valor de compensação para ajustar a posição após a rolagem
+                  const offset = -50// Valor de compensação para ajustar a posição após a rolagem
                   const topPosition =
                     eticaSection.getBoundingClientRect().top +
                     window.pageYOffset +
@@ -86,6 +86,22 @@ function Menu() {
               <a
                 className="active:bg-yellow-300 py-2 px-2  active:rounded-md  active:text-amber-800"
                 href="#"
+                onClick={(e) => {
+                  e.preventDefault()
+                  const eticaSection = document.querySelector('#ctt')
+                  eticaSection.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start',
+                    inline: 'nearest',
+                  })
+                  const offset = -50 // Valor de compensação para ajustar a posição após a rolagem
+                  const topPosition =
+                    eticaSection.getBoundingClientRect().top +
+                    window.pageYOffset +
+                    offset
+
+                  window.scrollTo({ top: topPosition, behavior: 'smooth' })
+                }}
               >
                 Contato
               </a>
@@ -157,7 +173,7 @@ function Menu() {
             href="#"
             onClick={(e) => {
               e.preventDefault()
-              const eticaSection = document.querySelector('.somos')
+              const eticaSection = document.querySelector('#nos')
               eticaSection.scrollIntoView({
                 behavior: 'smooth',
                 block: 'start',
@@ -177,6 +193,22 @@ function Menu() {
           <a
             className="transition-transform transform hover:scale-110 lg:inline-block hover:rounded-md hover:px-2 hover:text-amber-800"
             href="#"
+            onClick={(e) => {
+              e.preventDefault()
+              const eticaSection = document.querySelector('#ctt')
+              eticaSection.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start',
+                inline: 'nearest',
+              })
+              const offset = -140 // Valor de compensação para ajustar a posição após a rolagem
+              const topPosition =
+                eticaSection.getBoundingClientRect().top +
+                window.pageYOffset +
+                offset
+
+              window.scrollTo({ top: topPosition, behavior: 'smooth' })
+            }}
           >
             Contato
           </a>

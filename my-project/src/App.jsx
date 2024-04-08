@@ -206,6 +206,7 @@ function App() {
           </div>
         </div>
       </section>
+      <Toaster richColors />
       <footer
         className="bg-amber-950 text-yellow-50
       "
@@ -305,7 +306,7 @@ function App() {
               </a>
             </li>
           </ul>
-          <Toaster richColors />
+
           <div className="-mx-4">
             <h3 className="text-xl">Redes Sociais</h3>
             <div className="flex items-center justify-center text-lg   font-semibold 564  '1er57">
